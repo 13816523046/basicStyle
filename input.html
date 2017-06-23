@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>input弹窗出软件盘</title>
+</head>
+<style type="text/css">
+	input{
+		width: 200px;
+		height: 50px;
+		margin-bottom: 20px;
+		display: block;
+		border: 1px solid #333;
+	}
+</style>
+<body> 
+<input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;display: block;">
+<input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
+<input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
+<input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
+<input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
+<input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
+<input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
+<input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
+<input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
+</body>
+<script type="text/javascript">
+	var input= document.getElementsByTagName('input')[0];
+	var isAndroid = true;
+	var timer = "";
+	input.onfocus = function(event){
+		if(isAndroid){
+			 timer = setInterval(function(){
+			 	console.log(event.target)
+			  	event.target.scrollIntoView();
+			  	console.warn("金鸡奖");
+			},200)
+		}
+	};
+	input.onblur = function(){
+		clearInterval(timer);
+	}
+
+</script>
+</html>
