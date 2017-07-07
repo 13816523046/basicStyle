@@ -4,6 +4,25 @@
 	<title>input弹窗出软件盘</title>
 </head>
 <style type="text/css">
+html {
+-webkit-font-smoothing: antialiased;
+-ms-text-size-adjust:100%;
+-webkit-text-size-adjust: 100%; /* 2 */
+margin: 0;
+padding: 0;
+}
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,dd,form,span,samp,p,a{
+font-size: 12px;
+font-weight: normal;
+margin:0;
+font-family:  "Microsoft YaHei", Helvetica, STHeiTi,"Helvetica Neue","微软雅黑",SimSun,sans-serif;
+}
+	ul,ol{
+		padding-left:0;
+		list-style-type:none;
+	}
+
+	li{display: inline-block;}
 	input{
 		width: 200px;
 		height: 50px;
@@ -11,8 +30,18 @@
 		display: block;
 		border: 1px solid #333;
 	}
+	#trigger1,#trigger2{
+		width: 80%;
+		height: 30px;
+		line-height: 30px;
+		border: 1px solid #333;
+		padding-left: 5px;
+	}
 </style>
-<body> 
+<link rel="stylesheet" href="./css/mobileSelect.css">
+<body>
+<div id="trigger1">单项选择</div>
+<div id="trigger2">多项选择</div>
 <input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;display: block;">
 <input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
 <input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
@@ -23,7 +52,49 @@
 <input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
 <input type="" name="弹出软键盘" style="width: 200px;height: 100px;border: 1px solid #333;">
 </body>
+<script type="text/javascript" src="./js/mobileSelect.js"></script>
 <script type="text/javascript">
+	//只有trigger 和 wheels 是必要参数  其他都是选填参数
+	var mobileSelect1 = new MobileSelect({
+	trigger: '#trigger1',
+	title: '单项选择',
+	wheels: [{data:['周日','周一','周二','周三','周四','周五','周六']}],
+	transitionEnd:function(indexArr, data){
+        console.log(data);
+    },
+    callback:function(indexArr, data){
+        console.log(data);//选择的值
+    }
+	});
+	var mobileSelect2 = new MobileSelect({
+    trigger: '#trigger2',
+    title: '双项选择',
+    wheels: [
+		{data:[
+			{
+				id:'1',
+				value:'山西',
+				childs:[
+					{id:'1',value:'大同'},
+					{id:'2',value:'太原'},
+					{id:'3',value:'朔州'},
+					{id:'4',value:'吕梁'}
+				]
+			},
+			{
+				id:'2',
+				value:'山西1',
+				childs:[
+					{id:'1',value:'大同1'},
+					{id:'2',value:'太原1'},
+					{id:'3',value:'朔州1'},
+					{id:'4',value:'吕梁1'}
+				]
+			}
+
+		]}
+            ]
+});
 	var input= document.getElementsByTagName('input')[0];
 	var isAndroid = true;
 	var timer = "";
